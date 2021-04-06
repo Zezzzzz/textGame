@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <base href="./">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="">
+
+</head>
+<body>
+    <div class="threadBody">
+        <div class="back" ontouchstart="goBack()"></div>
+        <div class="threadContent"></div>
+        <div class="replies">
+            <p class="replyHeader">Replies</p>
+            
+        </div>
+        <div id="addComment" class="addComment">
+            <div class="commentProfilePic">
+                <img src="./img/defaultProfile.png"/>
+            </div>
+            <div class="commentBox" ontouchstart="addComment()">
+                Add a comment
+            </div>
+        </div>
+    </div>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-content" src=" ">
+    </div>
+
+    <script src="./js/navigate.js"></script>
+    <script src="./js/move.js"></script>
+    <script src="./js/indexData.js"></script>
+    <script src="./js/insideThread.js"></script>
+
+</body>
+</html>

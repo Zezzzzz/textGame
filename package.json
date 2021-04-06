@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "cordova-android": "^9.0.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-native-keyboard": "^2.0.6"
+  },
+  "cordova": {
+    "platforms": [
+      "browser",
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-native-keyboard": {
+        "LICENSE": "TRIAL",
+        "LIC_ANDROID": "TRIAL"
+      },
+      "cordova-plugin-keyboard": {}
+    }
+  }
+}

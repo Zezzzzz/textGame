@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <base href="./">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="">
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) 
+        <a href="#" onclick="signOut();">Sign out</a> -->
+</head>
+
+<body>
+    <div class="box">
+        <div class="name" id="nameDiv"></div>
+        <div class="subName">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="hid-box"ontouchstart="handleTouchStart(event)"
+        ontouchmove="handleTouchMove(event)"
+        ontouchend="handleTouchEnd(event)">
+            <div class="dragTop">
+                <img src="img/line.png" width="15%" height="auto">
+            </div>
+            <table class="threads" id="threadTable">
+                <tr class="headerCategory">
+                    <td>
+                        <div class="category">Popular</div>
+                        <div class="category">Recommended</div>
+                        <div class="category">New</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-content" src=" ">
+    </div>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/move.js"></script>
+    <script src="./js/indexData.js"></script>
+    <script src="./js/threads.js"></script>
+    
+    <script>
+        var container = document.querySelector('table');
+        for (let thread of threads) {
+            var html = `
+                        
+                        <tr>
+                            <td class="row">
+                                <p style="font-size:3vw;color: #6f706f;margin:0px">
+                                    Posted by gutan 1h ago
+                                </p>
+                                 <!--<a href="/thread.html?${thread.id}">-->
+                                <h class="threadHeader">
+                                    ${thread.title}
+                                </h4>
+                                <div class="bottom">
+                                    <div class="threadImg">
+                                        <img class="textImg" src="./img/testText1.jpg" ontouchstart="handleImageZoom(event)"/>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="like">
+                                        <img src="./img/like.png">
+                                    </div>
+                                    <p>
+                                        10 votes    
+                                    </p>
+                                    <div class="like">
+                                        <img src="./img/comment.png">
+                                    </div>
+                                    <p class="comment-count">
+                                        ${thread.comments.length} comments
+                                    </p>
+                                </div>
+                                </a>
+                            </td>
+                        </tr>
+                        `
+            container.insertAdjacentHTML('beforeend', html);
+        }</script>
+
+</body>
+</html>

@@ -1,0 +1,505 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    touch-action: none;
+    height: 100%;
+    margin: 10px 60px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 4vw;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1, h4, ol {
+    margin: 0;
+}
+
+.threadHeader {
+    font-size: 5vw;
+    color: #fff;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.threads {
+    margin: 0 10%;
+    width: 80%;
+    height: 100%;
+    table-layout: fixed;
+    border-collapse: separate; 
+    border-spacing: 0 15px; 
+    display: flex;
+    flex-flow: column;
+}
+
+.headerCategory {
+    margin: 35px 10% 0% 10%;
+}
+
+.threads tbody {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: visible;
+}
+
+.threads tbody tr {
+    width: 100%;
+}
+
+.threads thead,
+.threads tbody tr {
+    display: table;
+    table-layout: fixed;
+}
+
+.threadImgDiv{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.threadImg {
+    position: relative;
+    width: 25%;
+    background-color: darkgray;
+    margin: 20px 20px 20px 0;
+    transition:transform 0.25s ease;
+    display: inline-block;
+}
+
+.threadImg:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+    
+}
+
+
+.threadImg img {
+    position: absolute; /* Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; /* Make the picture taking the size of it's parent */
+    width: 100%; /* This if for the object-fit */
+    height: 100%; /* This if for the object-fit */
+    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+    object-position: center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+  /* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 70%;
+}
+/* Add Animation */
+.modal-content {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+  
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+  
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.headerRow {
+    background: white;
+    padding: 25px;
+
+}
+
+.category {
+    width:  auto;
+    margin: 10px;
+    padding: 8px;
+    background: #303030;
+    border-radius: 10px;
+    display: inline-block;
+    color: #fff;
+}
+
+.category:hover, .category:focus, 
+.category:active, .category:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
+
+@media screen and (min-width: 421px) {
+	.category  {
+	  font-size: 4vw;
+      margin: -8px 10px 10px 0px;
+	}
+  }
+  
+  @media screen and (max-width: 420px) {
+	.category  {
+	  font-size: 4vw;
+      margin: -8px 5px 5px 0px;
+	}
+  }
+
+.row {
+    padding: 5%;
+    background-color: #303030;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.row p {
+    font-size: 3vw;
+    color: #6f706f;
+    margin: 6px 6% 0px 2%;
+}
+
+.bottom {
+    display: flex;
+    color: grey;
+    font-size: 12px;
+}
+
+.like {
+    width: 8%;
+    height: auto;
+}
+
+.like img {
+    width: 100%;
+    height: 100%;
+}
+
+.timestamp {
+    padding-right: 10px;
+}
+
+.box {
+    touch-action: none;
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    width: 100%;
+    background: linear-gradient(to top right, #000, #333333) fixed;
+    overscroll-behavior: contain;
+}
+
+.name {
+    position: relative;
+    margin: 0 10%;
+    top: 20%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 6vw;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.subName {
+    position: relative;
+    top: 20%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3vw;
+    color: #fff;
+    margin: 0 10%;
+}
+
+.hid-box {
+    border-radius: 40px 40px 0px 0px;
+    top: 21%;
+    position: relative;
+    transition: all 0.3s ease-out;
+    background: #000;
+    overscroll-behavior: contain;
+    z-index: 1;
+    border-top: 1px solid #4d4d4d;
+}
+
+
+.login {
+    touch-action: none;
+    position: relative;
+    top: 0;
+    bottom: 0px;
+    width: 100%;
+    background: linear-gradient(to top right, #0B1C51, #6679B6) fixed;
+    overscroll-behavior: contain;
+}
+.login-box {
+    position: fixed;
+    width: 80%;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    margin: 0 auto;
+}
+
+.threadBody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top right, #000, #333333) fixed;
+    overflow-y: auto;
+}
+
+.back {
+    position: relative;
+    background-image: url("../img/backToPost.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 10px;
+    width: 30%;
+    height: 5%;
+    top: 5%;
+}
+
+.threadContent {
+    background: #303030;
+    width: 92%;
+    height: auto;
+    position: relative;
+    top: 5%;
+    left: 4%;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid #4d4d4d;
+}
+
+.threadContent p {
+    font-size: 3vw;
+    color: #6f706f;
+}
+
+
+.replies {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 8%
+}
+
+.replies h {
+    font-size: 3vw;
+    margin: 0px 5% 5% 5%;
+    color: #6f706f;
+}
+
+.replies p {
+    font-size: 4vw;
+    margin: 5%;
+    color: #6f706f;
+}
+
+.reply {
+    background: #303030;
+    width: 92%;
+    height: auto;
+    position: relative;
+    top: 5%;
+    left: 4%;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.reply div{
+    display: flex;
+    color: grey;
+    font-size: 12px;
+    margin: 2.5%;
+}
+
+.voteCount {
+    font-size: 3.5vw;
+    margin: 1%;
+}
+
+.commentSize{
+    position: absolute;
+    width: 100%;
+    height: 1%;
+    margin-top: 40px;
+}
+
+.addComment{
+    position:fixed;
+    width:100%;
+    height:7%;
+    top:93%;
+    background: linear-gradient(to top right, #000, #333333) fixed;
+}
+
+.commentProfilePic {
+    float: left;
+    width: 14%;
+    height: 100%;
+    padding: 1.5%;
+    margin-left: 2%;
+}
+
+.commentProfilePic img{
+    height: 100%;
+    width: auto;
+}
+
+.commentBox {
+    float: left;
+    width: 70%;
+    height: 80%;
+    padding-top: 1.5%;
+    padding-left: 2%;
+    border-radius: 10px;
+    background-color: #303030;
+    margin-top: 2%;
+    border: 1px solid white;
+    color: #6f706f;
+    font-size: 4vw;
+}
+
+.commentTop {
+    position: relative;
+    display: inline-block;
+    height: 7%;
+    width: 100%;
+}
+
+.closeComment {
+    position: relative;
+    top: 10%;
+    left: 5%;
+    color: #fff;
+    font-size: 6vw;
+    font-weight: bold;
+    transition: 0.3s;
+    float: left;
+    margin-right: 5%;
+}
+
+.postComment {
+    position: relative;
+    top: 10%;
+    right: 5%;
+    color: #52c2ff;
+    font-size: 5.5vw;
+    font-weight: bold;
+    transition: 0.3s;
+    float: right;
+}
+
+.commentThreadContent {
+    width: 80%;
+    height: auto;
+    margin: 0% 10% 0% 10%;
+    color: #fff;
+}
+
+.addYourCommentBox{
+    width: 92%;
+    height: 76%;
+    background-color: #303030;
+    margin: 4%;
+    border-radius: 20px;
+    padding: 20px;
+    color: #6f706f;
+
+}
+
+.addYourCommentBox textarea {
+    background: transparent;
+    border: none;
+    color: #6f706f;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: 4vw;
+    outline: none;
+}
+
+.addThread {
+    position: fixed;
+    width: auto;
+    height: 10%;
+    top: 85%;
+    z-index: 1;
+    left: 78%;
+}
+
+.addThread img{
+    max-height:100%;
+    max-width: auto;
+}
+
+.threadContent textarea {
+    background: transparent;
+    border: none;
+    color: #6f706f;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: 4vw;
+    outline: none;
+}

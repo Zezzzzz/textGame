@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="google-signin-client_id" content="902193880927-e2un67hkmtnrq8o3cdfrj25spki77icj.apps.googleusercontent.com">
+    <link href="./css/style.css" rel="stylesheet">
+    <base href="./">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="./form-2/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./form-2/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./form-2/assets/css/form-elements.css">
+    <link rel="stylesheet" href="./form-2/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="./js/signIn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+</head>
+
+<body>
+    <script>startApp();</script>
+    <div class="login">
+        <div class="login-box">
+            <div class="social-login-buttons">
+                
+                <a class="btn btn-link-2" href="#">
+                    <i class="fa fa-facebook"></i>Login with Facebook
+                </a>
+                <div class="btn btn-link-2" id="googleButton">
+                    <i class="fa fa-google-plus"></i>Login with Google
+                </div>
+                <a class="btn btn-link-2" href="#">
+                    <i class="fa fa-mobile-phone"></i>Login with Phone Number
+                </a>
+                <a class="btn btn-link-1" href="#">
+                    <i></i>Trouble logging in?
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</body>
+</html>

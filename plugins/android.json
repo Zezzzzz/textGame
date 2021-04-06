@@ -1,0 +1,23 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.example.textGame"
+    },
+    "cordova-plugin-native-keyboard": {
+      "LICENSE": "TRIAL",
+      "LIC_ANDROID": "TRIAL",
+      "PACKAGE_NAME": "com.example.textGame"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "com.example.textGame"
+    }
+  },
+  "dependent_plugins": {}
+}

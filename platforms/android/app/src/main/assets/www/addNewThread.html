@@ -14,12 +14,14 @@
     <div class="threadBody">
         <div class="commentTop">
             <span class="closeComment" ontouchstart="goBack()">&times;</span>
-            <span class="closeComment">Add Comment</span>
-            <span class="postComment" id="postComment" ontouchstart="postComment()">Post</span>
+            <span class="closeComment">Add New Thread</span>
+            <span class="postComment" id="postComment" ontouchstart="postNewThread()">Post</span>
         </div>
-        <div class="threadContent" style="top:0%; height:10%"></div>
+        <div class="threadContent" style="top:0%; height:10%">
+            <textarea type="text" id="title" name="typeTitle" placeholder="Add a title"></textarea>
+        </div>    
         <div class="addYourCommentBox">
-            <textarea type="text" id="comment" name="typeComment" placeholder="Add your comment"></textarea>
+            <textarea type="text" id="content" name="typeContent" placeholder="Add some description"></textarea>
         </div>
     </div>
     
@@ -32,7 +34,7 @@
     <script src="./js/indexData.js"></script>
     <script src="./js/navigate.js"></script>
     <script src="./js/move.js"></script>
-    <script src="./js/addComment.js"></script>
+    <script src="./js/addNewThread.js"></script>
     
 </body>
 </html>

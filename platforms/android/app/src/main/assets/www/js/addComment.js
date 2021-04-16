@@ -1,5 +1,6 @@
-var threadWebservice = 'http://192.168.1.36:8080/thread';
-var postWebservice = 'http://192.168.1.36:8080/post';
+var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
+var threadWebservice = awsURL+":8080/thread";
+var postWebservice = awsURL+":8080/post";
 
 
 fetch(threadWebservice + "/getThread?threadID=" + params.threadID[0])
@@ -52,11 +53,35 @@ span.onclick = function() {
     imageZoom = false;
 }
 
-function showOnscreenKB(){
-    console.log("test");
-    NativeKeyboard.showMessenger({
-        onSubmit: function(text) {
-          console.log("The user typed: " + text);
+
+function postComment(){
+    var comment = document.getElementById("comment").value;
+    var reqData = {
+        "post": {
+            //"userID": sessionStorage.getItem('loggedIn'),
+            "userID": "9",
+            "threadID": params.threadID[0],
+            "post_title": params.post_title[0],
+            "content": comment,
+            "imageURL": "",
+            "status": "3"
         }
-      });
+        
+    }
+    console.log(reqData);
+    fetch(postWebservice + '/addComment', {
+        method: 'POST',
+        body: JSON.stringify(reqData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        url = "thread.html?threadID=" + data.threadID;
+        console.log('Success', data);
+        window.location.replace(url);
+        
+    })
+    .catch((error) => {
+        console.log('Error', error);
+    });
+    
 }

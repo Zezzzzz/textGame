@@ -1,5 +1,5 @@
 var http = new XMLHttpRequest();
-var webservice = 'http://192.168.1.36:8080'
+var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
 
 var googleUser = {};
 var startApp = function() {
@@ -34,7 +34,7 @@ function attachSignin(element) {
                 }
                 
             }
-            fetch(webservice + '/user/login', {
+            fetch(awsURL + '/user/login', {
                 method: 'POST',
                 body: JSON.stringify(reqData)
             })

@@ -59,7 +59,7 @@ p {
 }
 
 .headerCategory {
-    margin-top: 35px;
+    margin: 35px 10% 0% 10%;
 }
 
 .threads tbody {
@@ -188,6 +188,9 @@ p {
     color: #fff;
 }
 
+.category:hover, .category:focus, 
+.category:active, .category:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
+
 @media screen and (min-width: 421px) {
 	.category  {
 	  font-size: 4vw;
@@ -245,6 +248,60 @@ p {
     overscroll-behavior: contain;
 }
 
+.profileSideBar{
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    z-index: 2;
+    overflow: auto;
+    background: linear-gradient(to top right, #000, #333333) fixed;
+    border-radius: 40px;
+    padding-top: 35%;
+}
+
+.profileSideBarContent{
+    font-size: 4vw;
+    color: #fff;
+    margin: 10%;
+    position: relative;
+    height: 5%;
+}
+
+.profileSideBarSettings{
+    font-size: 4vw;
+    color: #fff;
+    margin: 10%;
+    position: relative;
+    height: 5%;
+    top: 56%;
+}
+
+.profileSideBarContent img{
+    max-height: 100%;
+    width: auto;
+}
+
+.profileSideBarSettings img{
+    max-height: 100%;
+    width: auto;
+}
+
+.profile {
+    position: relative;
+    margin-left: 5%;
+    top: 5%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 6vw;
+    font-weight: bold;
+    height: 5%;
+    width: auto;
+}
+
+.profile img{
+    max-height:100%;
+    max-width: auto;
+}
+
 .name {
     position: relative;
     margin: 0 10%;
@@ -276,13 +333,6 @@ p {
     border-top: 1px solid #4d4d4d;
 }
 
-.dragTop {
-    top: 0;
-    position: absolute;
-    height: 12%;
-    width: 100%;
-    text-align: center;
-}
 
 .login {
     touch-action: none;
@@ -394,7 +444,7 @@ p {
     width:100%;
     height:7%;
     top:93%;
-    background: linear-gradient(to top right, #000, #333333) fixed;
+    background: linear-gradient(to top left, #000, #333333) fixed;
 }
 
 .commentProfilePic {
@@ -469,4 +519,41 @@ p {
     border-radius: 20px;
     padding: 20px;
     color: #6f706f;
+
+}
+
+.addYourCommentBox textarea {
+    background: transparent;
+    border: none;
+    color: #6f706f;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: 4vw;
+    outline: none;
+}
+
+.addThread {
+    position: fixed;
+    width: auto;
+    height: 10%;
+    top: 85%;
+    z-index: 1;
+    left: 78%;
+}
+
+.addThread img{
+    max-height:100%;
+    max-width: auto;
+}
+
+.threadContent textarea {
+    background: transparent;
+    border: none;
+    color: #6f706f;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: 4vw;
+    outline: none;
 }

@@ -248,6 +248,60 @@ p {
     overscroll-behavior: contain;
 }
 
+.profileSideBar{
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    z-index: 2;
+    overflow: auto;
+    background: linear-gradient(to top right, #000, #333333) fixed;
+    border-radius: 40px;
+    padding-top: 35%;
+}
+
+.profileSideBarContent{
+    font-size: 4vw;
+    color: #fff;
+    margin: 10%;
+    position: relative;
+    height: 5%;
+}
+
+.profileSideBarSettings{
+    font-size: 4vw;
+    color: #fff;
+    margin: 10%;
+    position: relative;
+    height: 5%;
+    top: 56%;
+}
+
+.profileSideBarContent img{
+    max-height: 100%;
+    width: auto;
+}
+
+.profileSideBarSettings img{
+    max-height: 100%;
+    width: auto;
+}
+
+.profile {
+    position: relative;
+    margin-left: 5%;
+    top: 5%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 6vw;
+    font-weight: bold;
+    height: 5%;
+    width: auto;
+}
+
+.profile img{
+    max-height:100%;
+    max-width: auto;
+}
+
 .name {
     position: relative;
     margin: 0 10%;
@@ -390,7 +444,7 @@ p {
     width:100%;
     height:7%;
     top:93%;
-    background: linear-gradient(to top right, #000, #333333) fixed;
+    background: linear-gradient(to top left, #000, #333333) fixed;
 }
 
 .commentProfilePic {

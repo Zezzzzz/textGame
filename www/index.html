@@ -7,13 +7,37 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="">
+    
     <!--<script src="/js/checkLoggedIn.js"></script>-->
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) 
         <a href="#" onclick="signOut();">Sign out</a> -->
 </head>
 
 <body>
-    <div class="box">
+    <div class="box" ontouchstart="w3_close(event)">
+        <!-- Sidebar -->
+        <div class="profileSideBar" style="display:none" id="mySidebar">
+            <div href="#" class="profileSideBarContent">
+                <img src="./img/myProfile.png"> 
+                My Profile
+            </div>
+            <div href="#" class="profileSideBarContent">
+                <img src="./img/bookmark.png"> 
+                Saved
+            </div>
+            <div href="#" class="profileSideBarContent">
+                <img src="./img/history.png"> 
+                History
+            </div>
+            <div href="#" class="profileSideBarSettings">
+                <img src="./img/settings.png"> 
+                Settings
+            </div>
+        </div>
+        <!-- Page Content -->
+        <div class="profile">
+            <img src="./img/defaultProfile.png" onclick="w3_open()"></button>
+        </div>
         <div class="name" id="nameDiv"></div>
         <div class="subName">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         <div class="hid-box"ontouchstart="handleTouchStart(event)"

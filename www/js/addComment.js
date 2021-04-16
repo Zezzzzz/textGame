@@ -1,5 +1,6 @@
-var threadWebservice = 'http://192.168.1.36:8080/thread';
-var postWebservice = 'http://192.168.1.36:8080/post';
+var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
+var threadWebservice = awsURL+":8080/thread";
+var postWebservice = awsURL+":8080/post";
 
 
 fetch(threadWebservice + "/getThread?threadID=" + params.threadID[0])

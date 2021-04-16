@@ -72,3 +72,17 @@ span.onclick = function() {
   imageZoom = false;
 }
 
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    
+}
+
+var ignoreClickOnMeElement = document.getElementsByClassName('profileSideBar')[0];
+
+function w3_close(event) {
+    var isClickedInsideElement = ignoreClickOnMeElement.contains(event.target);
+    if(!isClickedInsideElement){
+        document.getElementById("mySidebar").style.display = "none";
+    }
+}
+

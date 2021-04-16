@@ -1,5 +1,6 @@
-var threadWebservice = 'http://192.168.1.36:8080/thread';
-var postWebservice = 'http://192.168.1.36:8080/post';
+var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
+var threadWebservice = awsURL+":8080/thread";
+var postWebservice = awsURL+":8080/post";
 
 
 fetch(threadWebservice + "/getThread?threadID=" + params.threadID[0])
@@ -46,8 +47,8 @@ fetch(threadWebservice + "/getThread?threadID=" + params.threadID[0])
     .catch(function(error){
         console.log(error);
     });
-
-fetch(postWebservice + "/getAllPostOfThread?threadID=" + params.threadID[0])
+//RMB to change userID
+fetch(postWebservice + "/getAllPostOfThread?threadID=" + params.threadID[0] + "&currentUserID=" + 2) 
     .then((resp) => resp.json())
     .then((data) => {
         var container = document.getElementsByClassName('replies')[0];
@@ -93,9 +94,24 @@ fetch(postWebservice + "/getAllPostOfThread?threadID=" + params.threadID[0])
                 </div>
             `
             container.insertAdjacentHTML('beforeend', html);
+            var vote = document.getElementById(post.postID);
+            var upArrow = document.getElementById(post.postID+"upvote");
+            var downArrow = document.getElementById(post.postID+"downvote");
             
-            document.getElementById(post.postID).setAttribute("upvoted", false);
-            document.getElementById(post.postID).setAttribute("downvoted", false);
+            if(JSON.parse(i)[3] == "1"){
+                vote.setAttribute("upvoted", true);
+                vote.setAttribute("downvoted", false);
+                upArrow.src = "./img/upvoted.png";
+            } else if(JSON.parse(i)[3] == "-1"){
+                vote.setAttribute("upvoted", false);
+                vote.setAttribute("downvoted", true);
+                downArrow.src = "./img/downvoted.png";
+                console.log(downArrow);
+            } else {
+                vote.setAttribute("upvoted", false);
+                vote.setAttribute("downvoted", false);
+            } 
+            
         }
         var bottomDiv = document.createElement('div');
         bottomDiv.className = "commentSize";
@@ -115,12 +131,12 @@ function upvote(postID){
     var upArrow = document.getElementById(postID+"upvote");
     var downArrow = document.getElementById(postID+"downvote");
     if(!upvoted && downvoted){
-        fetch(postWebservice + "/upVote?postID=" + postID)
+        fetch(postWebservice + "/upVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .catch(function(error){
             console.log(error);
         });
-        fetch(postWebservice + "/upVote?postID=" + postID)
+        fetch(postWebservice + "/upVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .then((data) => {
             document.getElementById(postID).innerHTML = data;
@@ -134,7 +150,7 @@ function upvote(postID){
         downArrow.src = "./img/arrow.png";
 
     } else if (!upvoted){
-        fetch(postWebservice + "/upVote?postID=" + postID)
+        fetch(postWebservice + "/upVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .then((data) => {
             document.getElementById(postID).innerHTML = data;
@@ -147,7 +163,7 @@ function upvote(postID){
             upArrow.src = "./img/upvoted.png";
         }
     } else {
-        fetch(postWebservice + "/downVote?postID=" + postID)
+        fetch(postWebservice + "/downVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .then((data) => {
             document.getElementById(postID).innerHTML = data;
@@ -164,12 +180,12 @@ function downvote(postID){
     var upArrow = document.getElementById(postID+"upvote");
     var downArrow = document.getElementById(postID+"downvote");
     if(upvoted && !downvoted){
-        fetch(postWebservice + "/downVote?postID=" + postID)
+        fetch(postWebservice + "/downVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .catch(function(error){
             console.log(error);
         });
-        fetch(postWebservice + "/downVote?postID=" + postID)
+        fetch(postWebservice + "/downVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .then((data) => {
             document.getElementById(postID).innerHTML = data;
@@ -183,7 +199,7 @@ function downvote(postID){
         downArrow.src = "./img/downvoted.png";
 
     } else if (!downvoted){
-        fetch(postWebservice + "/downVote?postID=" + postID)
+        fetch(postWebservice + "/downVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .then((data) => {
             document.getElementById(postID).innerHTML = data;
@@ -196,7 +212,7 @@ function downvote(postID){
             downArrow.src = "./img/downvoted.png";
         }
     } else {
-        fetch(postWebservice + "/upVote?postID=" + postID)
+        fetch(postWebservice + "/upVote?userID=" + 2 + "&postID=" + postID)
         .then((resp) => resp.json())
         .then((data) => {
             document.getElementById(postID).innerHTML = data;
@@ -210,6 +226,7 @@ function downvote(postID){
 }
 
 function addComment(){
-    var url = "addComment.html?threadID="+params.threadID[0]+"&userID="+sessionStorage.getItem('loggedIn');
-    window.location.replace(url);
+    var url = "addComment.html?threadID="+params.threadID[0]+"&post_title="+document.getElementsByClassName("threadHeader")[0].innerText;
+    var addCommentBox = document.getElementById("addCommentBox");
+    addCommentBox.setAttribute("href", url);
 }

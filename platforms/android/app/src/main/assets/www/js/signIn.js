@@ -1,5 +1,6 @@
 var http = new XMLHttpRequest();
 var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
+var localhost = "http://localhost"
 
 var googleUser = {};
 var startApp = function() {
@@ -34,7 +35,7 @@ function attachSignin(element) {
                 }
                 
             }
-            fetch(awsURL + '/user/login', {
+            fetch(localhost + '/user/login', {
                 method: 'POST',
                 body: JSON.stringify(reqData)
             })

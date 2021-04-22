@@ -1,6 +1,7 @@
 var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
-var threadWebservice = awsURL+":8080/thread";
-var postWebservice = awsURL+":8080/post";
+var localhost = "http://localhost"
+var threadWebservice = localhost+":8080/thread";
+var postWebservice = localhost+":8080/post";
 
 fetch(threadWebservice + "/getLatest")
     .then((resp) => resp.json())
@@ -106,10 +107,4 @@ function changeCategory(s){
         .catch(function(error){
             console.log(error);
         });
-}
-
-function goToNewThreadPage(){
-    var url = "addNewThread.html";
-    var addNewThreadButton = document.getElementById("goToNewThreadPage");
-    addNewThreadButton.setAttribute("href", url);
 }

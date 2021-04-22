@@ -7,7 +7,7 @@ function handleTouchStart(event){
 }
 
 function handleTouchMove(event){
-    if(!imageZoom){
+    if(!imageZoom && !window.location.href.includes("myProfile")){
         var touch = event.touches[0];
         var change = startingY - touch.clientY;
         if(change < 0){
@@ -24,10 +24,9 @@ function handleTouchMove(event){
 }
 
 function handleTouchEnd(event){
-    if(!imageZoom){
+    if(!imageZoom && !window.location.href.includes("myProfile")){
         var change = startingY - event.changedTouches[0].clientY;
         var threshold = screen.height / 5;
-        console.log(startingY);
         console.log(threadBox.style.top);
         if (threadBox.style.top != '0px'){
             if (change < threshold) {
@@ -73,6 +72,7 @@ span.onclick = function() {
 }
 
 function w3_open() {
+    console.log("test");
     document.getElementById("mySidebar").style.display = "block";
     
 }
@@ -80,9 +80,17 @@ function w3_open() {
 var ignoreClickOnMeElement = document.getElementsByClassName('profileSideBar')[0];
 
 function w3_close(event) {
-    var isClickedInsideElement = ignoreClickOnMeElement.contains(event.target);
-    if(!isClickedInsideElement){
-        document.getElementById("mySidebar").style.display = "none";
+    if(!window.location.href.includes("myProfile")){
+        var isClickedInsideElement = ignoreClickOnMeElement.contains(event.target);
+        if(!isClickedInsideElement){
+            document.getElementById("mySidebar").style.display = "none";
+        }
     }
 }
 
+
+function goToNewThreadPage(){
+    var url = "addNewThread.html";
+    var addNewThreadButton = document.getElementById("goToNewThreadPage");
+    addNewThreadButton.setAttribute("href", url);
+}

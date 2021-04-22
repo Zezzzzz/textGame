@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="">
     
 </head>
-<body>
+<body style="padding-bottom:0">
 
     <div class="threadBody">
         <div class="commentTop">
@@ -24,6 +24,12 @@
             <textarea type="text" id="content" name="typeContent" placeholder="Add some description"></textarea>
         </div>
     </div>
+
+    <a href="" id="goToNewThreadPage">
+        <div class="addImg"ontouchstart="getImage()">
+            <img src="./img/addImg.png">
+        </div>
+    </a>
     
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -35,6 +41,7 @@
     <script src="./js/navigate.js"></script>
     <script src="./js/move.js"></script>
     <script src="./js/addNewThread.js"></script>
+    <script src="./js/imageProcessing.js"></script>
     
 </body>
 </html>

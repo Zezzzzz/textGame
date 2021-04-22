@@ -1,5 +1,6 @@
 var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
-var threadWebservice = awsURL+":8080/thread";
+var localhost = "http://localhost"
+var threadWebservice = localhost+":8080/thread";
 
 function postNewThread(){
     var title = document.getElementById("title").value;

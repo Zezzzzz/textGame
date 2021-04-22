@@ -17,7 +17,18 @@
     },
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "com.example.textGame"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.example.textGame"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.example.textGame"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.example.textGame"
+    }
+  }
 }

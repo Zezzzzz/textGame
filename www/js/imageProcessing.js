@@ -1,30 +1,47 @@
-var camearaOptions = {
-    quality: 100,
-    destinationType: navigator.camera.DestinationType.FILE_URI,
-    sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(navigator.camera);
+}
+var profileImage = document.getElementById("profileImage");
+var profilePicURI = localStorage.getItem("profilePicURI");
+if(profilePicURI != null && profileImage != null){
+    profileImage.src = profilePicURI;
+}
+function setOptions(srcType) {
+    var options = {
+        // Some common settings are 20, 50, and 100
+        quality: 50,
+        destinationType: Camera.DestinationType.FILE_URI,
+        // In this app, dynamically set the picture source, Camera or photo gallery
+        sourceType: srcType,
+        encodingType: Camera.EncodingType.JPEG,
+        mediaType: Camera.MediaType.PICTURE,
+        allowEdit: true,
+        correctOrientation: true
+    }
+    return options;
 }
 
-function getImage() {
-    navigator.camera.getPicture(uploadPhoto, onError, camearaOptions);
-}
+var imageLocation;
+var profileImage = document.getElementById("profileImage");
+function openFilePicker(selection) {
+    
+    var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
+    var options = setOptions(srcType);
+    //var func = createNewFileEntry;
 
-function onError(err) {
-    alert(error);
-}
+    navigator.camera.getPicture(function cameraSuccess(imageUri) {
+        imageLocation = imageUri;
+        console.log(profileImage);
+        if(profileImage != null){
+            profileImage.src = imageUri;
+            localStorage.setItem("profilePicURI", imageUri);
+        }
+        
 
-function uploadPhoto(imageURI) {
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-    options.mimeType = "image/jpeg";
-    /*var ft = new FileTransfer();
-    ft.upload(imageURI, "http://192.168.1.4/phonegap/upload/upload.php",
-        function(result) {
-            console.log(JSON.stringify(result));
-        },
-        function(error) {
-            console.log(JSON.stringify(error));
-        }, options);
-        */
-    console.log(imageURI);
+    }, function cameraError(error) {
+        console.debug("Unable to obtain picture: " + error, "app");
+
+    }, options);
 }

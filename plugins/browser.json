@@ -7,17 +7,22 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-native-keyboard": {
-      "LICENSE": "TRIAL",
-      "PACKAGE_NAME": "com.example.textGame"
-    },
-    "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "com.example.textGame"
-    },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.example.textGame"
     },
     "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.example.textGame"
+    },
+    "org.apache.cordova.cloudinary": {
+      "PACKAGE_NAME": "com.example.textGame"
+    },
+    "cordova-plugin-firebasex": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+      "PACKAGE_NAME": "com.example.textGame"
+    },
+    "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "com.example.textGame"
     }
   },

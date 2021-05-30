@@ -39,7 +39,7 @@ h1, h4, ol {
 }
 
 .threadHeader {
-    font-size: 5vw;
+    font-size: 4vw;
     color: #fff;
 }
 
@@ -87,10 +87,9 @@ p {
 
 .threadImg {
     position: relative;
-    width: 25%;
-    background-color: darkgray;
-    margin: 20px 20px 20px 0;
-    transition:transform 0.25s ease;
+    width: 35%;
+    margin: 5px 5px 5px 0;
+    transition: transform 0.25s ease;
     display: inline-block;
 }
 
@@ -231,6 +230,7 @@ p {
     display: flex;
     color: grey;
     font-size: 12px;
+    margin-top: 10px;
 }
 
 .like {
@@ -265,7 +265,14 @@ p {
     overflow: auto;
     background: linear-gradient(to top right, #000, #333333) fixed;
     border-radius: 40px;
-    padding-top: 35%;
+    padding-right: 10%;
+    padding-top: 5%;
+}
+
+.logout{
+    float: right;
+    color: #fff;
+    font-size: 4vw;
 }
 
 .profileSideBarContent{
@@ -274,6 +281,7 @@ p {
     margin: 10%;
     position: relative;
     height: 5%;
+    top: 25%;
 }
 
 .profileSideBarSettings{
@@ -302,13 +310,23 @@ p {
     font-family: 'Roboto', sans-serif;
     font-size: 6vw;
     font-weight: bold;
-    height: 5%;
+    height: 50px;
     width: auto;
 }
 
 .profile img{
-    max-height:100%;
-    max-width: auto;
+    border-radius: 50%;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    object-position: center;
+    object-fit: cover;
+    overflow: hidden;
+    display: block;
 }
 
 .name {
@@ -384,13 +402,15 @@ p {
 .threadContent {
     background: #303030;
     width: 92%;
-    height: auto;
+    height: 40%;
     position: relative;
     top: 5%;
     left: 4%;
     border-radius: 20px;
     padding: 20px;
     border: 1px solid #4d4d4d;
+    overflow-y: auto;
+    text-align:justify;
 }
 
 .threadContent p {
@@ -548,7 +568,7 @@ p {
     width: auto;
     height: 10%;
     top: 80%;
-    z-index: 1;
+    z-index: 2;
     left: 75%;
 }
 
@@ -597,14 +617,17 @@ p {
 }
 
 .profilePic img {
+    border-radius: 50%;
     position: relative;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     width: 80px;
-    height: 100%;
+    height: 80px;
     object-position: center;
+    object-fit: cover;
+    overflow: hidden;
     display: block;
 }
 
@@ -633,3 +656,16 @@ p {
     margin: 10px 0px;
     font-size: 3vw;
 }
+
+.postCategory{
+    width: auto;
+    padding: 10px;
+    margin-right: 5px;
+    background: #303030;
+    border-radius: 10px;
+    display: inline-block;
+    color: #fff;
+}
+
+.postCategory:hover, .postCategory:focus, 
+.postCategory:active, .postCategory:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }

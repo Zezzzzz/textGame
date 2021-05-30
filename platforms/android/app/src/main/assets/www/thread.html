@@ -15,8 +15,10 @@
         <div class="threadContent"></div>
         <div class="replies">
             <p class="replyHeader">Replies</p>
-            
+            <div class="postCategory" id="latest" style="margin-left: 5%;" ontouchstart="changePostCategory(this.id)">Latest</div>
+            <div class="postCategory" id="top" ontouchstart="changePostCategory(this.id)">Top</div>
         </div>
+        <div class="replies"></div>
         <div id="addComment" class="addComment">
             <div class="commentProfilePic">
                 <img src="./img/defaultProfile.png"/>

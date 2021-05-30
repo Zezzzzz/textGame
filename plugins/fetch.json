@@ -15,22 +15,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-native-keyboard": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-native-keyboard"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-keyboard": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-keyboard"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-file-transfer": {
     "source": {
       "type": "registry",
@@ -51,6 +35,48 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-camera@^5.0.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+"
+    }
+  },
+  "cordova-plugin-firebase-analytics": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebase-analytics@~5.0.0"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-fcm-ng": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-fcm-ng@^8.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "org.apache.cordova.cloudinary": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/ElNinjaGaiden/org.apache.cordova.cloudinary"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-firebasex": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebasex"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-androidx-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx-adapter"
     },
     "is_top_level": true,
     "variables": {}

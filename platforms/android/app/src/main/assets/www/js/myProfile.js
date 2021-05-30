@@ -1,14 +1,43 @@
 var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
-var localhost = "http://localhost"
-var threadWebservice = localhost+":8080/thread";
+//var localhost = "http://localhost"
+var localhost = "http://192.168.1.43"
 
-function changeProfileShow(s){
-    console.log(s);
+var threadWebservice = localhost+":8080/thread";
+var userWebservice = localhost+":8080/user"
+
+var stats = document.getElementsByClassName('stats');
+var statsName = ["<br>Threads","<br>Comments","<br>Votes"]
+fetch(userWebservice + "/checkUserStats?user_id=" + 2)
+    .then((resp) => resp.json())
+    .then((data) => {
+        for (var i in data){
+            stats[i].innerHTML = data[i] + statsName[i];
+        }
+    }
+)
+
+var currentThread = 0; 
+var box = document.getElementsByClassName('box')[0]
+var currentCategory = "myThreads";
+var reachedEnd = false;
+changeProfileShow(currentCategory,10,currentThread);
+
+window.addEventListener('scroll', function() {
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight){
+        currentThread = currentThread + 10;
+        reachedEnd = true;
+        changeProfileShow(currentCategory,10,currentThread);
+        console.log("done");
+    }
+});
+
+function changeProfileShow(s,limit,offset){
+    //console.log(s);
     url = threadWebservice;
     if(s === "myThreads"){
-        url += "/getAllThreadsCreatedByUser?id_user=" + 4;
+        url += "/allThreadsCreatedByUser?id_user="+2+"&limit="+limit+"&offset="+offset;
     } else if(s === "commentedThreads"){
-        url += "/getAllThreadsCommentedByUser?id_user=" + 2;
+        url += "/allThreadsCommentedByUser?id_user="+2+"&limit="+limit+"&offset="+offset;
     }
 
     var container = document.querySelector('table');
@@ -24,6 +53,12 @@ function changeProfileShow(s){
                 var commentCount = JSON.parse(JSON.parse(i)[1]);
                 var votes = JSON.parse(JSON.parse(i)[2]);
                 var container = document.querySelector('table');
+                var imageURL = thread.imageURL;
+                var display = "block";
+                if(imageURL == null || imageURL.length == 0){
+                    display = "none";
+                    imageURL = "";
+                }
                 var html = `
                             
                             <tr>
@@ -33,8 +68,8 @@ function changeProfileShow(s){
                                             ${thread.thread_title}
                                         </h4>
                                         <div class="bottom">
-                                            <div class="threadImg">
-                                                <img class="textImg" src="./img/testText1.jpg" ontouchstart="handleImageZoom(event)"/>
+                                            <div class="threadImg" style="display:${display}">
+                                                <img class="textImg" src="${imageURL}" ontouchstart="handleImageZoom(event)"/>
                                             </div>
                                         </div>
                                         <div class="bottom">

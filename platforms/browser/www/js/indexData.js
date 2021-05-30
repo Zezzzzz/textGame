@@ -22,4 +22,6 @@ function parseURLParams(url) {
 
 var nameDiv = document.getElementById("nameDiv");
 var params = parseURLParams(sPageURL);
-//nameDiv.innerHTML = "Hi, " + params.username;
+if(params != null && nameDiv != null){  
+    nameDiv.innerHTML = "Hi, " + params.username;
+}

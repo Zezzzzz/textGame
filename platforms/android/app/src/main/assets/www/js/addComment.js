@@ -1,15 +1,16 @@
 var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
-var localhost = "http://localhost"
+var localhost = "http://192.168.1.43"
 var threadWebservice = localhost+":8080/thread";
 var postWebservice = localhost+":8080/post";
 
 
-fetch(threadWebservice + "/getThread?threadID=" + params.threadID[0])
+fetch(threadWebservice + "/thread?threadID=" + params.threadID[0])
     .then((resp) => resp.json())
     .then((data) => {
         var container = document.getElementsByClassName('threadContent')[0];
         var modal = document.getElementById("myModal");
         var modalImg = document.getElementById("modal-content");
+
         for (var i in data){
             var html = `
                 <h class="threadHeader" id="commentThreadHeader">
@@ -70,7 +71,7 @@ function postComment(){
         
     }
     console.log(reqData);
-    fetch(postWebservice + '/addComment', {
+    fetch(postWebservice + '/comment', {
         method: 'POST',
         body: JSON.stringify(reqData)
     })

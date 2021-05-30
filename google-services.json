@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "879489788600",
+    "project_id": "textgame-304708",
+    "storage_bucket": "textgame-304708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879489788600:android:da2185621e13e4f964e24d",
+        "android_client_info": {
+          "package_name": "com.example.textGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879489788600-eh1o3dcl1nk97md4uda4t0doo98aj3ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAvM72YktaUqSLUCxr-RbgRDXRttc3UjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879489788600-eh1o3dcl1nk97md4uda4t0doo98aj3ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

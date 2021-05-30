@@ -2,6 +2,13 @@ var threadBox = document.getElementsByClassName('hid-box')[0]
 var startingY;
 var imageZoom = false;
 
+var profileImage = document.getElementById("profileImage");
+var profilePicURI = localStorage.getItem("profilePicURI");
+if(profilePicURI != null){
+    console.log(profilePicURI);
+    profileImage.src = profilePicURI;
+}
+
 function handleTouchStart(event){
     startingY = event.touches[0].clientY;
 }
@@ -31,20 +38,20 @@ function handleTouchEnd(event){
         if (threadBox.style.top != '0px'){
             if (change < threshold) {
                 threadBox.style.top = '21%';
-                document.getElementsByClassName("threads")[0].tBodies[0].style.overflowY = "visible";
+                //document.getElementsByClassName("threads")[0].tBodies[0].style.overflowY = "visible";
                 document.getElementById("threadTable").style.overflowY = "visible";
             } else{
                 if (startingY){
                     threadBox.style.transition = 'all .3s'
                     threadBox.style.top = 0
-                    document.getElementsByClassName("threads")[0].tBodies[0].style.overflowY = "scroll";
+                    //document.getElementsByClassName("threads")[0].tBodies[0].style.overflowY = "scroll";
                     document.getElementById("threadTable").style.overflowY = "scroll";
                 }
             }
         } else{
             if (-change > threshold) {
                 threadBox.style.top = '21%';
-                document.getElementsByClassName("threads")[0].tBodies[0].style.overflowY = "visible";
+                //document.getElementsByClassName("threads")[0].tBodies[0].style.overflowY = "visible";
                 document.getElementById("threadTable").style.overflowY = "visible";
             }
         }
@@ -56,10 +63,10 @@ var img = document.getElementsByClassName("textImg");
 var modalImg = document.getElementById("modal-content");
 var commentModal = document.getElementById("commentModal");
 
-function handleImageZoom(event){
+function handleImageZoom(imgURI){
     imageZoom = true;
     modal.style.display = "block";
-    modalImg.src = img[0].src;
+    modalImg.src = imgURI;
 }
 
 // Get the <span> element that closes the modal

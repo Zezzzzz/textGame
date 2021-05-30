@@ -1,12 +1,17 @@
-var http = new XMLHttpRequest();
-var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com"
-var localhost = "http://localhost"
+var awsURL = "http://ec2-3-142-198-160.us-east-2.compute.amazonaws.com";
+var localhost = "http://192.168.1.43";
+var loginPage = 'login.html';
+
+//var localhost = "http://localhost"
 
 var googleUser = {};
 var startApp = function() {
     gapi.load('auth2', function(){
         // Retrieve the singleton for the GoogleAuth library and set up the client.
         auth2 = gapi.auth2.init({
+            //for android
+            //client_id: '902193880927-k9dbrvcv80vockq1r01hiqn39samecj7.apps.googleusercontent.com',
+            //for web browser
             client_id: '902193880927-e2un67hkmtnrq8o3cdfrj25spki77icj.apps.googleusercontent.com',
             cookiepolicy: 'single_host_origin',
             // Request scopes in addition to 'profile' and 'email'
@@ -35,15 +40,19 @@ function attachSignin(element) {
                 }
                 
             }
-            fetch(localhost + '/user/login', {
+            console.log(JSON.stringify(reqData));
+            fetch(localhost + ':8080/user/login', {
                 method: 'POST',
+                mode: 'cors',
+                credentials: 'same-origin',
                 body: JSON.stringify(reqData)
+                
             })
             .then(response => response.json())
             .then(data => {
                 console.log('Success', data);
                 url = "index.html?username=" + data.username + '&id_token=' + data.id_token;
-                sessionStorage.setItem("loggedIn", data.userID);
+                localStorage.setItem("loggedIn", data.userID);
                 window.location.replace(url);
             })
             .catch((error) => {
@@ -56,9 +65,9 @@ function attachSignin(element) {
 }
 
 function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-    });
-}
+    localStorage.removeItem("loggedIn");
+    console.log('User signed out.');
+    window.location.replace(loginPage);
+};
+
 

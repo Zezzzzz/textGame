@@ -6,8 +6,9 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="shortcut icon" href="">
-    
+    <link rel="shortcut icon" href="">    
+    <script src="./cordova.js"></script>
+    <script src="./js/pushNotification.js"></script>
     <!--<script src="/js/checkLoggedIn.js"></script>-->
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) 
         <a href="#" onclick="signOut();">Sign out</a> -->
@@ -17,6 +18,9 @@
     <div class="box" ontouchstart="w3_close(event)">
         <!-- Sidebar -->
         <div class="profileSideBar" style="display:none" id="mySidebar">
+            <div class="logout" ontouchstart="signOut()">
+                Logout
+            </div>
             <div href="#" class="profileSideBarContent">
                 <a href="./myProfile.html">
                     <img src="./img/myProfile.png"> 
@@ -40,7 +44,7 @@
         </div>
         <!-- Page Content -->
         <div class="profile">
-            <img src="./img/defaultProfile.png" onclick="w3_open()"></button>
+            <img id = "profileImage" src="./img/defaultProfile.png" onclick="w3_open()"></button>
         </div>
         <div class="name" id="nameDiv"></div>
         <div class="subName">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -48,9 +52,9 @@
         ontouchmove="handleTouchMove(event)"
         ontouchend="handleTouchEnd(event)">
             <div class="headerCategory">
-                <div class="category" id="pop" ontouchstart="changeCategory(this.id)">Popular</div>
-                <div class="category" id="reco" ontouchstart="changeCategory(this.id)">Recommended</div>
-                <div class="category" id="new" ontouchstart="changeCategory(this.id)">New</div>
+                <div class="category" id="pop" ontouchstart="changeCategory(this.id,10,0)">Popular</div>
+                <div class="category" id="reco" ontouchstart="changeCategory(this.id,10,0)">Recommended</div>
+                <div class="category" id="new" ontouchstart="changeCategory(this.id,10,0)">New</div>
             </div>
             <table class="threads" id="threadTable"></table>
         </div>
@@ -67,9 +71,11 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modal-content" src=" ">
     </div>
-    <script src="./js/threads.js"></script>
     <script src="./js/move.js"></script>
+    <script src="./js/threads.js"></script>
     <script src="./js/indexData.js"></script>
+    <script src="./js/signIn.js"></script>
+    
     
     
     

@@ -7,6 +7,8 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="">
+    <script src="./cordova.js"></script>
+    
     
     <!--<script src="/js/checkLoggedIn.js"></script>-->
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) 
@@ -21,8 +23,9 @@
             <span class="closeComment" ontouchstart="goBack()">&times;</span>
         </div>
         <div class="myProfile" id="profileDiv">
-            <div class="profilePic">
-                <img src="./img/defaultProfile.png">
+            <div class="profilePic" ontouchstart="openFilePicker('profileImage')">
+                <img id = "profileImage" src="./img/defaultProfile.png">
+                <img src="./img/editPencil.png" style="position: absolute;">
                 <p>Testing Name</p>
             </div>
         </div>
@@ -35,9 +38,9 @@
         ontouchmove="handleTouchMove(event)"
         ontouchend="handleTouchEnd(event)">
             <div class="headerCategory">
-                <div class="category" id="myThreads" ontouchstart="changeProfileShow(this.id)">Threads</div>
-                <div class="category" id="commentedThreads" ontouchstart="changeProfileShow(this.id)">Commented</div>
-                <div class="category" id="about" ontouchstart="changeProfileShow(this.id)">About</div>
+                <div class="category" id="myThreads" ontouchstart="changeProfileShow(this.id,10,0)">Threads</div>
+                <div class="category" id="commentedThreads" ontouchstart="changeProfileShow(this.id,10,0)">Commented</div>
+                <div class="category" id="about" ontouchstart="changeProfileShow(this.id,10,0)">About</div>
             </div>
             <table class="threads" id="threadTable"></table>
         </div>
@@ -54,14 +57,10 @@
         <span class="close">&times;</span>
         <img class="modal-content" id="modal-content" src=" ">
     </div>
-    <script src="./js/myThreads.js"></script>
     <script src="./js/myProfile.js"></script>
     <script src="./js/move.js"></script>
     <script src="./js/indexData.js"></script>
-    <script src="./js/navigate.js"></script>
-    
-    
-    
-
+    <script src="./js/navigate.js"></script>    
+    <script src="./js/imageProcessing.js"></script>
 </body>
 </html>
